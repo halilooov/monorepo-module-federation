@@ -11,6 +11,8 @@
 #### Loaders
 - [ ] SWC
 - [ ] Esbuild
+- [x] ts-loader
+- [x] Babel
 
 #### Bundlers
 - [ ] Vite
