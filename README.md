@@ -32,6 +32,7 @@
 - [ ] Bit
 - [x] Webpack 5 and Module Federation
 - [ ] Single SPA
+- [ ] nx
 
 #### Others
 - [ ] Storybook

@@ -5,13 +5,12 @@ import { buildWebpack, BuildMode, BuildPaths, BuildPlatform  } from "@packages/b
 
 import packageJson from './package.json'
 
+
 interface EnvVariables {
   mode: BuildMode;
   analyzer?: boolean;
   port: number;
   platform?: BuildPlatform;
-  SHOP_REMOTE_URL?: string
-  ADMIN_REMOTE_URL?: string
 }
 
 const paths: BuildPaths = {
@@ -24,25 +23,19 @@ const paths: BuildPaths = {
 
 export default (env: EnvVariables) => {
   const config = buildWebpack({
-    port: env.port ?? 3000,
+    port: env.port ?? 3002,
     mode: env.mode ?? "development",
     paths,
     analyzer: env.analyzer,
     platform: env.platform ?? "desktop",
   });
 
-  const SHOP_REMOTE_URL = env.SHOP_REMOTE_URL ?? 'http://localhost:3001'
-  const ADMIN_REMOTE_URL = env.ADMIN_REMOTE_URL ?? 'http://localhost:3002'
-
   config.plugins.push(new webpack.container.ModuleFederationPlugin(({
-    name: 'host',
+    name: 'prayerTime',
     filename: 'remoteEntry.js',
-
-    remotes: {
-      shop: `shop@${SHOP_REMOTE_URL}/remoteEntry.js`,
-      admin: `prayerTime@${ADMIN_REMOTE_URL}/remoteEntry.js`,
+    exposes: {
+      './Router': path.resolve(__dirname, 'src', 'components', 'Router', 'Router.tsx')
     },
-
     shared: {
       ...packageJson.dependencies,
       react: {

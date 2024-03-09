@@ -1,0 +1,75 @@
+.citySearching {
+  position: relative;
+
+  .input {
+    width: 250px;
+    border-radius: 15px;
+    border: 1px solid #aaa;
+    padding: 7px 10px;
+    background: #fff;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .inputRadius {
+    animation: ease .2s radius;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .citiesList {
+    width: calc(100% - 2px);
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    bottom: 0;
+    transform: translateY(100%);
+    animation: ease .3s fade;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #aaa;
+    border-top: none;
+    overflow: hidden;
+    background: #fff;
+
+    .citiesListItem {
+      button {
+        background: none;
+        width: 100%;
+        text-align: left;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      &:not(:last-child) button {
+        border-bottom: 1px solid #aaa;
+      }
+
+      &:nth-of-type(2n+1) {
+        background: #00000010;
+      }
+    }
+  }
+}
+
+@keyframes radius {
+  from {
+    border-radius: 15px;
+  }
+  to {
+    border-radius: 15px 15px 0 0;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    bottom: -10px;
+  }
+  to {
+    opacity: 1;
+    bottom: 0;
+  }
+}

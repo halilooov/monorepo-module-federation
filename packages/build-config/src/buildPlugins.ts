@@ -24,7 +24,8 @@ export function buildPlugins({
       scriptLoading: "module",
       inject: "body",
       favicon: path.resolve(paths.public, "favicon.ico"),
-      publicPath: '/'
+      publicPath: "/",
+      chunks: isDev ? ["main"] : "all",
     }),
     new DefinePlugin({
       __PLATFORM__: JSON.stringify(platform),

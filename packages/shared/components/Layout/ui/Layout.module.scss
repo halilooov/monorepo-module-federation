@@ -1,0 +1,11 @@
+@import "@packages/shared/assets/reset";
+@import "@packages/shared/assets/normalize";
+@import "@packages/shared/assets/fonts";
+
+.layout {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  font-family: Montserrat, serif;
+  overflow: hidden;
+}
